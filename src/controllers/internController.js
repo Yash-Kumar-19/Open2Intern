@@ -14,13 +14,13 @@ const createIntern = async function (req, res){
             })
          }
 
-         if ((typeof(data.name) != "string") || !data.name.match(/^[a-zA-Z][a-zA-Z ]+[a-zA-Z]+$/)) {
+         if((typeof(data.name) != "string") || !data.name.match(/^[a-zA-Z][a-zA-Z ]+[a-zA-Z]+$/)) {
             return res.status(400).send({
                 status: false,
                 msg: "Intern Name is Missing or should contain only alphabets"
             })
         }
-        if ((typeof(data.email) != "string") || data.email.trim().length==0) {
+        if((typeof(data.email) != "string") || data.email.trim().length==0) {
             return res.status(400).send({
                 status: false,
                 msg: "Email is Missing or has invalid input"
@@ -41,7 +41,7 @@ const createIntern = async function (req, res){
             })
         }
 
-        if ((typeof(data.collegeName) != "string")|| !data.collegeName.match(/^[a-z]+$/)) {
+        if((typeof(data.collegeName) != "string")|| !data.collegeName.match(/^[a-z]+$/)) {
             return res.status(400).send({
                 status: false,
                 msg: "College Name is Missing or should be in lower case only"

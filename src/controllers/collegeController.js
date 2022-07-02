@@ -38,10 +38,11 @@ const createCollege = async function (req, res){
         
         const stringIsAValidUrl = (url) => {
          return (isValidURL.isUri(url)) ? true : false 
+        
         };
 
 
-        if(typeof(data.logoLink) != "string"){
+        if(typeof(data.logoLink) != "string" || data.logoLink.trim().length==0 ){
             return res.status(400).send({
                 status : false,
                 msg : "Logo Link is missing or has some invalid input"
@@ -91,9 +92,9 @@ const getCollegeIntern = async function (req, res){
      }
     let details = await CollegeModel.findOne({name : collegeName, isDeleted : false})
     if(!details){
-        return res.status(400).send({
+        return res.status(404).send({
             status : false,
-            msg : "Invalid  College Name"
+            msg :"College Name does not exists"
         })
     }
     let id = details._id
